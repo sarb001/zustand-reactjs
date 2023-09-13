@@ -1,0 +1,43 @@
+.column{
+    background-color: rgb(141, 144, 144);
+    min-height: 20rem;
+    color: rgb(0, 0, 0);
+    width: 33%;
+    max-width: 20rem;
+    margin: 0 0.5rem;
+    border-radius: 4px;
+    padding: 3%;
+}
+.statewrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.statewrapper > button {
+    padding: 0% 2%;
+    margin: 4%;
+}
+.statewrapper > button:hover{
+    background-color: rgb(240, 6, 6);
+    cursor: pointer;
+}
+.Modal{
+    position: absolute;
+    background-color: rgb(138, 138, 138);
+    width: 20%;
+    height: 20%;
+    top: 20%;
+    left :35%;
+}
+.modalcontent{
+    background-color: wheat;
+    position: absolute;
+    z-index: 100;
+    padding: 1rem;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%,-50%);
+}
+.column .drop{
+    border: dashed white 4px;
+}
