@@ -4,4 +4,5 @@
     height: 90vh;
     text-align: center;
     font-size: 29px;
+    display: flex;
 }

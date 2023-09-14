@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import '../styles/MainApp.css' ;
 import  Store1  from '../MainComponents/Store1' ;
+import { useStore } from 'zustand';
 
 const MainApp = () => {
 
@@ -16,33 +17,60 @@ const MainApp = () => {
    // const incPear = useStore((store) => store.addingpear);
    // const decPear = useStore((store) => store.removingpear);
 
-   const { apple , pear , mango ,addingapple  ,removingapple  
-      ,addingmangoes ,removingmangoes , addingpear ,removingpear } = Store1();
-      console.log('APPLE -',apple);
-      console.log('pear -',pear);
-      console.log('mango -',mango);
-      console.log(' incmango -',addingapple);
-      console.log(' demango -',removingapple);
+   //used Destructuring  better than above 
+
+      // const { apple , pens , sketches , mango ,
+      //    addingapple  ,removingapple  
+      //    ,addingmangoes ,removingmangoes ,
+      //    addingpens   , removingpens , 
+      //    addingsketches  , removingsketches } = Store1();
+
+
+   // In immer case -
+   // taking data from Nesting 
+
+    const apple = Store1((store) => store.fruits.apple);
+
+   const addingapple = Store1((store) => store.addingfruitsapple);
+   console.log('adding fruits -',addingapple);
+
+   const deletingapple = Store1((store) => store.deletefruitsapple);
+   console.log('deleting fruits -',deletingapple);
+
+      // do it  for others as well mango  , pens , stickers 
+
 
   return (
    <>
       <div className = "mainappcontainer">
+
               <span> Slices in Zustand   </span>
-               <div className="mangocounter">
-                  <h3> Mongo - {mango} </h3>
-                  <button onClick = {addingmangoes}> Add Mango ++    </button>
-                  <button onClick = {removingmangoes}> Remove Mango -- </button>
+               <div className="first-container">
+                     <h4> Fruits Special  </h4>
+                     {/* <div className="mangocounter">
+                        <h3> Mongo - {mango} </h3>
+                        <button onClick = {addingmangoes}> Add Mango ++    </button>
+                        <button onClick = {removingmangoes}> Remove Mango -- </button>
+                     </div> */}
+                     <div className="applecounter">
+                        <h3> Apple here - {apple} </h3>
+                        <button onClick = {addingapple}> Add Apple ++    </button>
+                        <button onClick = {deletingapple}> Remove Apple -- </button>
+                     </div>
                </div>
-               <div className="applecounter">
-                  <h3> Apple - {apple} </h3>
-                  <button onClick = {addingapple}> Add Apple ++    </button>
-                  <button onClick = {removingapple}> Remove Apple -- </button>
-               </div>
-               <div className="pearcounter">
-                  <h3> Pear - {pear} </h3>
-                  <button onClick = {addingpear}> Add Pear ++    </button>
-                  <button onClick = {removingpear}> Remove Pear -- </button>
-               </div>
+               {/* <div className="second">
+                     <h4> Stationary Special  </h4>
+                  <div className="penscounter">
+                     <h3> Pens - {pens} </h3>
+                     <button onClick = {addingpens}> Add pens ++    </button>
+                     <button onClick = {removingpens}> Remove pens -- </button>
+                  </div>
+                  <div className="sketchescounter">
+                     <h3> Sketches - {sketches} </h3>
+                     <button onClick = {addingsketches}> Add sketches ++    </button>
+                     <button onClick = {removingsketches}> Remove sketches -- </button>
+                  </div>
+               </div> */}
       </div>
    </>
   )
